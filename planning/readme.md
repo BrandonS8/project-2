@@ -41,7 +41,7 @@ This is a town building app. Users can add their own house to one of the towns a
 ## Bronze
 
 * put houses into towns
-* add families (includes pets) to houses
+* add families to houses
 * delete a house
 * edit a house
 
@@ -54,7 +54,7 @@ This is a town building app. Users can add their own house to one of the towns a
 ## Gold
 
 * auth with one of: google/facebook/twitter/github
-
+* add pets to houses
 * use an image searching API to find pics of houses or vectors of houses to increase variety of how the houses look
 * send and read mail to/from another house
 * add apartments people can choose to live in instead of a house
