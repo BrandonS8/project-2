@@ -59,6 +59,7 @@ This is a town building app. Users can add their own house to one of the towns a
 * send and read mail to/from another house
 * add apartments people can choose to live in instead of a house
 * use a real map and let users place points for their house
+* admin user that can use full CRUD on towns
 
 ## Wireframing
 
@@ -75,3 +76,8 @@ houses: []
 
 name:
 residents: []
+
+## CRUD
+
+Houses will have full crud functionality
+Towns will only be viewable and only updated to contain houses
