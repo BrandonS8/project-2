@@ -63,3 +63,15 @@ This is a town building app. Users can add their own house to one of the towns a
 ## Wireframing
 
 All wireframes are in the planning/imgs folder
+
+## Models
+
+### Town
+
+name:
+houses: []
+
+### house
+
+name:
+residents: []
