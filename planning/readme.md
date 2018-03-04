@@ -35,7 +35,8 @@ This is a town building app. Users can add their own house to one of the towns a
 
 ## MVP
 
-* see a list of houses on the home page
+* see a list of towns on the home page
+* see a list of houses
 * create a new house
 
 ## Bronze
