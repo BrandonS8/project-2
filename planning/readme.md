@@ -70,11 +70,13 @@ All wireframes are in the planning/imgs folder
 ### Town
 
 name:
+
 houses: []
 
 ### house
 
 name:
+
 residents: []
 
 ## CRUD
