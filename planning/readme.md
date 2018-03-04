@@ -81,3 +81,10 @@ residents: []
 
 Houses will have full crud functionality
 Towns will only be viewable and only updated to contain houses
+
+## Deploying
+
+Deploys for heroku:
+
+1.  When you can view the towns and houses
+2.  When you can use CRUD on towns/houses
