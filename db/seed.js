@@ -3,7 +3,7 @@ const Town = require('../models/Town')
 
 Town.remove({}).then(() => {
   House.remove({}).then(() => {
-    let dc = Town.create({
+    Town.create({
       name: 'Washington DC'
     }).then(town => {
       Promise.all([

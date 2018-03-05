@@ -1,6 +1,7 @@
 // require modules
 const express = require('express')
 const hbs = require('hbs')
+
 // require controller
 const controller = require('./controllers/controller')
 // configure express
