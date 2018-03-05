@@ -67,6 +67,11 @@ router.put('/:townid/:id/edit', (req, res) => {
 
 // delete house
 router.delete('/:townid/:id/edit', (req, res) => {
+  Town.findOne({ _id: req.params.townid }).then(town => {
+    town.houses.pull({ _id: req.params.id })
+    console.log(town)
+    town.save()
+  })
   House.findOneAndRemove({ _id: req.params.id }).then(() => {
     res.redirect(`/${req.params.townid}`)
   })
