@@ -1,0 +1,12 @@
+<h1>{{house.name}}</h1>
+<form action="{{town.id/house.id}}?_method=put" method="POST" id="newHouse">
+  <p>Name:</p>
+  <input type="text" name="name" placeholder="name" value="{{house.name}}">
+  <p>Residents:</p>
+  <textarea rows="2" cols="50" name="residents" form="newHouse" placeholder="Enter names seperated by commas">{{house.residents}}</textarea>
+  <p>
+    <input type="submit" value="Update">
+  </p>
+</form>
+
+<p>{{town.name}}</p>

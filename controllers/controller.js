@@ -26,8 +26,8 @@ router.get('/:id/new', (req, res) => {
 
 // accept post for new house
 router.post('/:id', (req, res) => {
-  let names = []
-  names.push(req.body.resident)
+  let names = req.body.residents.split(',')
+  console.log(names)
   Town.findOne({ _id: req.params.id }).then(town => {
     House.create({
       name: req.body.name,
@@ -45,13 +45,33 @@ router.post('/:id', (req, res) => {
   })
 })
 
-// display residents of houses
+// display edit form
+router.get('/:townid/:id/edit', (req, res) => {
+  House.findOne({ _id: req.params.id }).then(house => {
+    let townId = req.params.townid
+    res.render('town/house/edit', { house, townId })
+  })
+})
+
+// update house
+router.put('/:townid/:id/edit', (req, res) => {
+  let names = req.body.residents.split(',')
+  House.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: { name: req.body.name, residents: names } },
+    { new: true }
+  ).then(house => {
+    res.redirect(`/${req.params.townid}/${req.params.id}`)
+  })
+})
+
+// show single house and display residents of houses
 router.get('/:townid/:id', (req, res) => {
-  Town.findOne({ _id: req.params.townid }).then(
-    House.findOne({ _id: req.params.id }).then(house => {
-      res.render('town/house/view', house)
-    })
-  )
+  console.log(req.params)
+  House.findOne({ _id: req.params.id }).then(house => {
+    let townId = req.params.townid
+    res.render('town/house/view', { house, townId })
+  })
 })
 
 module.exports = router

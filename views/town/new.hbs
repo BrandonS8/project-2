@@ -1,6 +1,10 @@
 <h1>{{name}}</h1>
-<form action="/{{this.id}}" method="post">
+<form action="/{{this.id}}" method="post" id='newHouse'>
+  <p>Name:</p>
   <input type="text" name="name" placeholder="name">
-  <input type="text" name="resident" placeholder="resident">
-  <input type="submit" value="create">
+  <p>Residents:</p>
+  <textarea rows="2" cols="50" name="residents" form="newHouse" placeholder="Enter names seperated by commas"></textarea>
+  <p>
+    <input type="submit" value="create">
+  </p>
 </form>
