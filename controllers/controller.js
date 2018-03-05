@@ -17,6 +17,33 @@ router.get('/:id', (req, res) => {
       res.render('town/view', town)
     })
 })
+// display new form
+router.get('/:id/new', (req, res) => {
+  Town.findOne({ _id: req.params.id }).then(town => {
+    res.render('town/new', town)
+  })
+})
+
+// accept post for new house
+router.post('/:id', (req, res) => {
+  let names = []
+  names.push(req.body.resident)
+  Town.findOne({ _id: req.params.id }).then(town => {
+    House.create({
+      name: req.body.name,
+      residents: names
+    })
+      .then(house => {
+        town.houses.push(house)
+      })
+      .then(() => {
+        town.save(err => console.log(err))
+      })
+      .then(house => {
+        res.redirect(`/${req.params.id}`)
+      })
+  })
+})
 
 // display residents of houses
 router.get('/:townid/:id', (req, res) => {
@@ -25,12 +52,6 @@ router.get('/:townid/:id', (req, res) => {
       res.render('town/house/view', house)
     })
   )
-})
-
-router.get('/houses', (req, res) => {
-  House.find({}).then(town => {
-    res.render('index', { town })
-  })
 })
 
 module.exports = router
