@@ -4,7 +4,7 @@ const mongoose = require('../db/connection')
 // make new mongoose.schema for town
 const TownSchema = new mongoose.Schema({
   name: String,
-  houses: Array
+  houses: []
 })
 
 // set variable town to the town schema

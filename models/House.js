@@ -3,6 +3,7 @@ const mongoose = require('../db/connection')
 
 // make new mongoose.schema for house
 const HouseSchema = new mongoose.Schema({
+  town: String,
   name: String,
   residents: Array
 })
