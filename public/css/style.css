@@ -1,0 +1,16 @@
+/* .navbar {
+  background: lightcyan;
+} */
+
+.card {
+  width: 300px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}

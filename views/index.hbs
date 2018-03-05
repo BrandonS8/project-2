@@ -1,4 +1,16 @@
-{{#each town}}
-<a href='/{{this.id}}' <p>{{name}}</p>
-</a>
-{{/each}}
+<div class="columns">
+  {{#each town}}
+  <a href='/{{this.id}}' class="column">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-1by1">
+          <img src="{{image}}" alt="Picture of {{name}}">
+        </figure>
+      </div>
+      <div class="media-content has-text-centered">
+        <p class="title is-4">{{name}}</p>
+      </div>
+    </div>
+  </a>
+  {{/each}}
+</div>

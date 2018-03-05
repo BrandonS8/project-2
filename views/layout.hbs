@@ -3,13 +3,28 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Townie</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 
 <body>
-  {{{body}}}
+  <nav class="navbar">
+    <div class="navbar-menu">
+      <ul>
+        <li class="navbar-item">
+          <a href="/">Home</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container is-fluid has-text-centered">
+    {{{body}}}
+  </div>
 </body>
 
 </html>
+
+{{!-- future? https://bulma.io/documentation/components/breadcrumb/ --}}

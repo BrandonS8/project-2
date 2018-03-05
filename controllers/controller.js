@@ -87,3 +87,6 @@ router.get('/:townid/:id', (req, res) => {
 })
 
 module.exports = router
+
+// source for .pull method for deleting
+// https://stackoverflow.com/questions/14763721/mongoose-delete-array-element-in-document-and-save

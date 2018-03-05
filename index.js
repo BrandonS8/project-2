@@ -15,6 +15,10 @@ app.set('view engine', 'hbs')
 // use bodyParser and methodOverride
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+
+// css
+app.use(express.static(__dirname + '/public'))
+
 // use controller
 app.use('/', controller)
 
