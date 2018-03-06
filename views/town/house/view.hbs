@@ -1,7 +1,12 @@
 <section class="flex-column">
   <h1 class="is-size-1">{{house.name}}</h1>
-  <a href="{{house.id}}/edit">Edit</a>
-  {{#each house.residents}}
-  <p>{{this}}</p>
-  {{/each}}
+  <div class="flex-row">
+    <img src="{{house.image}}" alt="house-image">
+    <div class="flex-column residents">
+      {{#each house.residents}}
+      <p>{{this}}</p>
+      {{/each}}
+    </div>
+  </div>
+  <a href="{{house.id}}/edit" class="button is-info">Edit</a>
 </section>
