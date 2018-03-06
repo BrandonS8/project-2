@@ -27,7 +27,6 @@ router.get('/:id/new', (req, res) => {
 // accept post for new house
 router.post('/:id', (req, res) => {
   let names = req.body.residents.split(',')
-  console.log(names)
   Town.findOne({ _id: req.params.id }).then(town => {
     House.create({
       name: req.body.name,
@@ -70,7 +69,6 @@ router.put('/:townid/:id/edit', (req, res) => {
 router.delete('/:townid/:id/edit', (req, res) => {
   Town.findOne({ _id: req.params.townid }).then(town => {
     town.houses.pull({ _id: req.params.id })
-    console.log(town)
     town.save()
   })
   House.findOneAndRemove({ _id: req.params.id }).then(() => {
@@ -80,7 +78,6 @@ router.delete('/:townid/:id/edit', (req, res) => {
 
 // show single house and display residents of houses
 router.get('/:townid/:id', (req, res) => {
-  console.log(req.params)
   House.findOne({ _id: req.params.id }).then(house => {
     let townId = req.params.townid
     res.render('town/house/view', { house, townId })
