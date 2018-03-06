@@ -10,14 +10,14 @@ Town.remove({}).then(() => {
     }).then(town => {
       Promise.all([
         House.create({
-          name: 'Brandon House',
+          name: `Brandon's House`,
           residents: ['Brandon'],
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109545-200.png'
         }).then(house => {
           town.houses.push(house)
         }),
         House.create({
-          name: 'Carl House',
+          name: `Carl's House`,
           residents: ['Carl', 'Miranda'],
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109538-200.png'
         }).then(house => {
@@ -34,14 +34,14 @@ Town.remove({}).then(() => {
     }).then(town => {
       Promise.all([
         House.create({
-          name: 'Bob House',
+          name: `Bob's House`,
           residents: ['Bob'],
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109545-200.png'
         }).then(house => {
           town.houses.push(house)
         }),
         House.create({
-          name: 'Cool House',
+          name: `Cool House`,
           residents: ['Carl', 'Miranda'],
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109538-200.png'
         }).then(house => {
