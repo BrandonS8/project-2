@@ -1,5 +1,7 @@
-<h1>{{house.name}}</h1>
-<a href="{{house.id}}/edit">Edit</a>
-{{#each house.residents}}
-<p>{{this}}</p>
-{{/each}}
+<section class="flex-column">
+  <h1 class="is-size-1">{{house.name}}</h1>
+  <a href="{{house.id}}/edit">Edit</a>
+  {{#each house.residents}}
+  <p>{{this}}</p>
+  {{/each}}
+</section>

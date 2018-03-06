@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const House = require('../models/House')
 const Town = require('../models/Town')
-
+const randomIcon = require('../testnp.js')
 // display all towns on homepage
 router.get('/', (req, res) => {
   Town.find({}).then(town => {
@@ -31,7 +31,8 @@ router.post('/:id', (req, res) => {
   Town.findOne({ _id: req.params.id }).then(town => {
     House.create({
       name: req.body.name,
-      residents: names
+      residents: names,
+      image: randomIcon()
     })
       .then(house => {
         town.houses.push(house)

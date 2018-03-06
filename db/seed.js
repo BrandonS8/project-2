@@ -11,13 +11,15 @@ Town.remove({}).then(() => {
       Promise.all([
         House.create({
           name: 'Brandon House',
-          residents: ['Brandon']
+          residents: ['Brandon'],
+          image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109545-200.png'
         }).then(house => {
           town.houses.push(house)
         }),
         House.create({
           name: 'Carl House',
-          residents: ['Carl', 'Miranda']
+          residents: ['Carl', 'Miranda'],
+          image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109538-200.png'
         }).then(house => {
           town.houses.push(house)
         })
@@ -33,13 +35,15 @@ Town.remove({}).then(() => {
       Promise.all([
         House.create({
           name: 'Bob House',
-          residents: ['Brandon']
+          residents: ['Bob'],
+          image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109545-200.png'
         }).then(house => {
           town.houses.push(house)
         }),
         House.create({
           name: 'Cool House',
-          residents: ['Carl', 'Miranda']
+          residents: ['Carl', 'Miranda'],
+          image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109538-200.png'
         }).then(house => {
           town.houses.push(house)
         })

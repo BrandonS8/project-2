@@ -4,7 +4,8 @@ const mongoose = require('../db/connection')
 // make new mongoose.schema for house
 const HouseSchema = new mongoose.Schema({
   name: String,
-  residents: Array
+  residents: Array,
+  image: String
 })
 
 // set variable house to the house schema

@@ -1,9 +1,12 @@
 <section class="flex-column">
   <h1 class="is-size-1">{{name}}</h1>
-  <a href='{{id}}/new' class="button is-primary">NEW</a>
-  {{#each houses}}
-  <a href='{{../this.id}}/{{this.id}}'>
-    <p>{{this.name}}</p>
-  </a>
-  {{/each}}
+  <a href='{{id}}/new' class="button is-primary new-house">NEW</a>
+  <div class="flex-row">
+    {{#each houses}}
+    <a href='{{../this.id}}/{{this.id}}'>
+      <p>{{this.name}}</p>
+      <img src="{{this.image}}" alt="vector image for house">
+    </a>
+    {{/each}}
+  </div>
 </section>

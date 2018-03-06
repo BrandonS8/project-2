@@ -91,3 +91,9 @@ Deploys for heroku:
 
 1.  When you can view the towns and houses
 2.  When you can use CRUD on towns/houses
+
+## NOTES:
+
+future? https://bulma.io/documentation/components/breadcrumb/
+add a few house vectors from noun project and make each new house randomly choose one or add a selector on the new page
+the noun project has an api!
