@@ -1,1 +1,14 @@
 <h1>Login</h1>
+{{#if message}}
+<div>{{message}}</div>
+{{/if}}
+
+<form method="POST" action="/user/login">
+  <p>Email:</p>
+  <input type="text" name="email" placeholder="email">
+  <p>Password:</p>
+  <input type="password" name="password" placeholder="password">
+  <p>
+    <input type="submit" value="Login">
+  </p>
+</form>

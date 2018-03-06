@@ -8,7 +8,6 @@ const session = require('express-session')
 const passport = require('passport')
 
 // require controllers
-const usersController = require('./controllers/usercontroller')
 const controller = require('./controllers/controller')
 // configure express
 const app = express()
@@ -38,7 +37,6 @@ app.use(passport.session())
 // })
 
 // use controllers
-app.use('/user', usersController)
 app.use('/', controller)
 
 // listen on port 3000 or heroku port
