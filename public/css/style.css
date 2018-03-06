@@ -25,3 +25,12 @@
 .new-house {
   width: 200px;
 }
+
+nav {
+  padding: 10px;
+}
+
+.house-card {
+  margin: 10px 0;
+  width: 200px;
+}

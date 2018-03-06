@@ -2,11 +2,24 @@
   <h1 class="is-size-1">{{name}}</h1>
   <a href='{{id}}/new' class="button is-primary new-house">NEW</a>
   <div class="flex-row">
-    {{#each houses}}
+    {{#each houses}} {{!--
     <a href='{{../this.id}}/{{this.id}}'>
       <p>{{this.name}}</p>
       <img src="{{this.image}}" alt="vector image for house">
+    </a> --}}
+    <a href='{{../this.id}}/{{this.id}}'>
+      <div class="card house-card">
+        <div class="card-image">
+          <figure class="image is-1by1">
+            <img src="{{image}}" alt="Picture of {{name}}">
+          </figure>
+        </div>
+        <div class="media-content has-text-centered">
+          <p class="title is-4">{{name}}</p>
+        </div>
+      </div>
     </a>
     {{/each}}
+
   </div>
 </section>

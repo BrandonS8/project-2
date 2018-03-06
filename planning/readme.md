@@ -97,3 +97,4 @@ Deploys for heroku:
 future? https://bulma.io/documentation/components/breadcrumb/
 add a few house vectors from noun project and make each new house randomly choose one or add a selector on the new page
 the noun project has an api!
+add pictures of people with this api too?
