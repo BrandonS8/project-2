@@ -17,9 +17,9 @@ const HouseSchema = new mongoose.Schema({
   image: String
 })
 
-HouseSchema.methods.encrypt = function (key) {
-  return bcrypt.hashSync(key, bcrypt.genSaltSync(8), null)
-}
+// HouseSchema.methods.encrypt = function (key) {
+//   return bcrypt.hashSync(key, bcrypt.genSaltSync(8))
+// }
 HouseSchema.methods.checkKey = function (key) {
   return bcrypt.compareSync(key, this.key)
 }
