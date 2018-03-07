@@ -2,11 +2,11 @@
   <h1 class="is-size-1">{{name}}</h1>
   <form action="/{{this.id}}" method="post" class="form-outline">
     <label class="label">Name:</label>
-    <input type="text" name="name" placeholder="name" class="input">
+    <input type="text" name="name" placeholder="name" class="input" required>
     <label class="label">Residents:</label>
     <textarea rows="2" cols="50" name="residents" placeholder="Enter names seperated by commas" class="textarea"></textarea>
     <label class="label">Password:</label>
-    <input type="password" name="key" placeholder="password" class="input">
+    <input type="password" name="key" placeholder="password" class="input" required>
     <p>
       <input type="submit" value="CREATE" class="button is-primary edit-buttons">
     </p>
