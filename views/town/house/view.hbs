@@ -2,10 +2,9 @@
   <h1 class="is-size-1">{{house.name}}</h1>
   <a href="{{house.id}}/edit" class="button is-info">Edit</a>
   <img src="{{house.image}}" alt="house-image">
-  <div class="">
-    {{#each house.residents}}
-    <p>{{this}}</p>
-    {{/each}}
-  </div>
+  <h2 class="is-size-3">Residents:</h2>
+  {{#each house.residents}}
+  <p>{{this}}</p>
+  {{/each}}
 
 </section>
