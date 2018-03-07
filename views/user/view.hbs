@@ -1,1 +1,5 @@
-<h1>USER</h1>
+<h1>{{currentUser.local.email}}</h1>
+
+{{#each currentUser.local.houses}}
+<p>{{this}}</p>
+{{/each}}

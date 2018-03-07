@@ -1,18 +1,27 @@
-var mongoose = require('../db/userdb')
-var bcrypt = require('bcrypt-nodejs')
+const mongoose = require('../db/userdb')
+const bcrypt = require('bcrypt-nodejs')
 
-var User = mongoose.Schema({
+const UserSchema = mongoose.Schema({
   local: {
     email: String,
-    password: String
+    password: String,
+    houses: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'House'
+      }
+    ]
   }
 })
 
-User.methods.encrypt = function(password) {
+UserSchema.methods.encrypt = function (password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
-User.methods.validPassword = function(password) {
+UserSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.local.password)
 }
-module.exports = mongoose.model('User', User)
+// set variable user to the user schema
+const User = mongoose.model('User', UserSchema)
+
+module.exports = User

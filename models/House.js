@@ -5,6 +5,7 @@ const mongoose = require('../db/connection')
 const HouseSchema = new mongoose.Schema({
   name: String,
   residents: Array,
+  user: String,
   image: String
 })
 

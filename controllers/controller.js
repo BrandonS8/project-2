@@ -5,57 +5,17 @@ const Town = require('../models/Town')
 const randomIcon = require('../resources/houseApi.js')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const passport = require('passport')
 
-// -------USERS---------
-
-// GET /user
-router.get('/user', (req, res) => {
-  res.render('user/view')
-})
-
-// GET user/signup
-router.get('/user/signup', (req, res) => {
-  res.render('user/signup', { message: req.flash('signupMessage') })
-})
-
-// POST user/signup
-router.post('/user/signup', (req, res) => {
-  var signupStrategy = passport.authenticate('local-signup', {
-    successRedirect: '/user',
-    failureRedirect: '/user/signup',
-    failureFlash: true
-  })
-  return signupStrategy(req, res)
-})
-
-// GET user/login
-router.get('/user/login', (req, res) => {
-  res.render('user/login', { message: req.flash('loginMessage') })
-})
-
-// POST user/login
-router.post('/user/login', (req, res) => {
-  var loginProperty = passport.authenticate('local-login', {
-    successRedirect: '/user',
-    failureRedirect: '/user/login',
-    failureFlash: true
-  })
-  return loginProperty(req, res)
-})
-
-// GET user/logout
-router.get('/user/logout', (req, res) => {
-  req.logout()
-  res.redirect('/')
-})
+// -----TOWNS------
 
 // display all towns on homepage
 router.get('/', (req, res) => {
   Town.find({}).then(town => {
+    console.log(town)
     res.render('index', { town })
   })
 })
+
 // display houses of towns from /:id
 router.get('/:id', (req, res) => {
   Town.findOne({ _id: req.params.id })
@@ -74,20 +34,24 @@ router.get('/:id/new', (req, res) => {
 // accept post for new house
 router.post('/:id', (req, res) => {
   let names = req.body.residents.split(',')
+  // console.log(req.user)
   Town.findOne({ _id: req.params.id }).then(town => {
     House.create({
       name: req.body.name,
       residents: names,
+      user: req.user.local.email,
       image: randomIcon()
     })
       .then(house => {
         town.houses.push(house)
+        req.user.houses.push(house)
       })
       .then(() => {
         town.save(err => console.log(err))
+        req.user.save(err => console.log(err))
       })
       .then(house => {
-        res.redirect(`/${req.params.id}`)
+        res.redirect(`/towns/${req.params.id}`)
       })
   })
 })
@@ -108,18 +72,19 @@ router.put('/:townid/:id/edit', (req, res) => {
     { $set: { name: req.body.name, residents: names } },
     { new: true }
   ).then(house => {
-    res.redirect(`/${req.params.townid}/${req.params.id}`)
+    res.redirect(`${req.params.townid}/${req.params.id}`)
   })
 })
 
 // delete house
 router.delete('/:townid/:id/edit', (req, res) => {
+  console.log(req.params)
   Town.findOne({ _id: req.params.townid }).then(town => {
     town.houses.pull({ _id: req.params.id })
     town.save()
   })
   House.findOneAndRemove({ _id: req.params.id }).then(() => {
-    res.redirect(`/${req.params.townid}`)
+    res.redirect(`towns/${req.params.townid}`)
   })
 })
 
