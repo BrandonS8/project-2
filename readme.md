@@ -73,7 +73,7 @@ In the future this will definitely have a better authentication system, whether 
 I also want to add a mail system where you can send mail to other houses.
 
 ## Running on a local machine
-If you want to get this running on your system you need to follow these steps: 
+If you want to get this running on your system (assuming you have MongoDB and it's running) you need to follow these steps: 
 1. Fork and clone [this repository](https://github.com/BrandonS8/project-2/)
 2. Install node packages:  
 `npm i`
