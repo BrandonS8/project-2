@@ -43,7 +43,7 @@ I chose to style this project using [Bulma](https://bulma.io/) even though I fee
 This currently stores a hashed key with each house, set by the creator of the house. I originally intended to use a full user system such as passport. I was running into a large amount of errors with no error codes so fixing them was difficult to say the least. I decided to implement the current password system in order to meet the project's deadline. The passport branch is still there, outdated compared to master, if you wanna see the attempt. I would connect the houses to the user's when the new authentication is added as well as making it so an admin account has access to all houses.
 
 #### Why is this not good?
-This password storing system is mostly secure using BCrypt but the problem lies in being able to delete houses as an admin would. There is no admin account I can give access, so I had to set an enviroment variable with a string to use as the admin pass. Obviously storing an admin password in plain text is a terrible idea and thats a major reason I intend to add passport in the future.
+This password storing system is mostly secure using BCrypt but the problem lies in being able to delete houses as an admin would. There is no admin account I can give access, so I had to set an enviroment variable with a string to use as the admin pass. Obviously storing an admin password in an enviroment vairable is a terrible idea even if you're storing the hash only and thats a major reason I intend to add passport in the future.
 
 ## Future Plans
 
