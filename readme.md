@@ -1,7 +1,28 @@
 # Townie
 
-Townie is a town building app, users can create their own houses with residents and put them into the towns. I built this as my second project at [General Assembly](https://generalassemb.ly/). It uses mongodb, express.js, handlebars, and node.js.
+Townie is a town building app, users can create their own houses with residents and put them into the towns. I built this as my second project at [General Assembly](https://generalassemb.ly/).
 
+## Overview
+![towns view](https://i.imgur.com/aZKJlBB.jpg)
+Check out the app [here](https://townie-project.herokuapp.com/)
+
+
+To use the app you start by choosing a town and clicking it. In there you can click on houses to view them, or hit the new button and make your own house. Click on the house then click edit to edit or delete your house, don't forget your password!
+
+## Technologies Used
+* MongoDB with [MLAB](https://mlab.com/) hosting the remote database
+* Express.js
+* Handlebars
+* Node.js
+
+## Features
+* Click on a town to view the houses inside
+* Make your own house
+* Name your house
+* Add residents in your house
+* App generates a random vector image for your house
+* Prevent edits to your house with a secure, hashed password
+* Delete or Edit your house 
 
 ## How it works
 
@@ -40,12 +61,32 @@ const HouseSchema = new mongoose.Schema({
 I chose to style this project using [Bulma](https://bulma.io/) even though I feel Bulma is less featured compared to [Materialize](http://materializecss.com/) because I liked the default styles more and it increases variation among my classes designs. Most of my class was only introduced to Materialize and it seemed nearly all of them were planning to use it, I wanted my project to stand out from the others.
 
 ## The authentication system
-This currently stores a hashed key with each house, set by the creator of the house. I originally intended to use a full user system such as passport. I was running into a large amount of errors with no error codes so fixing them was difficult to say the least. I decided to implement the current password system in order to meet the project's deadline. The passport branch is still there, outdated compared to master, if you wanna see the attempt. I would connect the houses to the user's when the new authentication is added as well as making it so an admin account has access to all houses.
+This currently stores a hashed key with each house, set by the creator of the house. I originally intended to use a full user system such as passport. I was running into a large amount of errors with no error codes so fixing them was difficult to say the least. I decided to implement the current password system in order to meet the project's deadline. The passport branch is still there, outdated compared to master, if you wanna see the attempt.
 
 #### Why is this not good?
-This password storing system is mostly secure using BCrypt but the problem lies in being able to delete houses as an admin would. There is no admin account I can give access, so I had to set an environment variable with a string to use as the admin pass. Obviously storing an admin password in an environment variable is a terrible idea even if you're storing the hash only and thats a major reason I intend to add passport in the future.
+This password storing system is mostly secure using BCrypt but the problem lies in being able to delete houses as an admin would. There is no admin account I can give access, so I had to set an environment variable with a string to use as the admin pass. Obviously storing an admin password in an environment variable is a bad idea for security reasons even if you're storing the hash only and thats a major reason I intend to add passport in the future.
 
 ## Future Plans
 
-In the future this will definitely have a better authentication system, whether it be passport or another option. The better system will have houses linked to users and an admin account that has access to all houses
+In the future this will definitely have a better authentication system, whether it be passport or another option. The better system will have houses linked to users and an admin account that has access to all houses.
+
+I also want to add a mail system where you can send mail to other houses.
+
+## Running on a local machine
+If you want to get this running on your system you need to follow these steps: 
+1. Fork and clone [this repository](https://github.com/BrandonS8/project-2/)
+2. Install node packages:  
+`npm i`
+3. Configure your [The Noun Project API](http://api.thenounproject.com/) key and secret in terminal:  
+` export TNP_API_KEY=paste your key here `  
+`export TNP_API_SECRET=paste your secret here `  
+4. Configure your admin key (put this in the delete password field of a house to delete it) in terminal:  
+`export ADMIN_KEY=TYPE AN ADMIN KEY HERE `  
+5. Seed the database, run in terminal:  
+`node db/seed.js`  
+6. Finally, start the app.  
+`node index.js`  
+or with nodemon:  
+`nodemon index.js`
+ 
 
