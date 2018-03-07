@@ -19,7 +19,7 @@ const TownSchema = new mongoose.Schema({
   ]
 })
 ```
-The house model stores the house name, residents, key, and picture. The key is hashed using [BCrypt](https://www.npmjs.com/package/bcrypt-nodejs) and the picture is randomly generated using [The Noun Project's API](http://api.thenounproject.com/). 
+The house model stores the house name, residents, key, and picture. The key is hashed using [BCrypt](https://www.npmjs.com/package/bcrypt-nodejs) and the picture is randomly generated using [The Noun Project's API](http://api.thenounproject.com/) and [Lodash's](https://lodash.com/) sample method. 
 ```javascript 
 const HouseSchema = new mongoose.Schema({
   name: {
