@@ -1,10 +1,10 @@
 <section class="flex-column">
   <h1 class="is-size-1">{{name}}</h1>
-  <form action="/{{this.id}}" method="post" id='newHouse'>
+  <form action="/{{this.id}}" method="post" class="form-outline">
     <label class="label">Name:</label>
     <input type="text" name="name" placeholder="name" class="input">
     <label class="label">Residents:</label>
-    <textarea rows="2" cols="50" name="residents" form="newHouse" placeholder="Enter names seperated by commas" class="textarea"></textarea>
+    <textarea rows="2" cols="50" name="residents" placeholder="Enter names seperated by commas" class="textarea"></textarea>
     <label class="label">Password:</label>
     <input type="password" name="key" placeholder="password" class="input">
     <p>

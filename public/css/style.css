@@ -50,3 +50,18 @@ nav {
   line-height: 10px;
   font-size: 10px;
 }
+
+.form-outline {
+  box-shadow: 0 2px 6px lightgrey;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 8px;
+}
+.residents-outline {
+  min-width: 100px;
+  border-left: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  padding: 5px;
+  margin: 8px;
+}
