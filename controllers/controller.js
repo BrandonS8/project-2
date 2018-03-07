@@ -2,9 +2,14 @@ const express = require('express')
 const router = express.Router()
 const House = require('../models/House')
 const Town = require('../models/Town')
+
+// import the randomIcon function from the api
 const randomIcon = require('../resources/houseApi.js')
 const bcrypt = require('bcrypt-nodejs')
+// used in place of an admin account because the internet can be an evil place, need to be able to delete houses
 const adminKey = process.env.ADMIN_KEY
+
+// hash function
 function hashKey (key) {
   return bcrypt.hashSync(key, bcrypt.genSaltSync(8))
 }
@@ -27,6 +32,14 @@ router.get('/:id', (req, res) => {
 router.get('/:id/new', (req, res) => {
   Town.findOne({ _id: req.params.id }).then(town => {
     res.render('town/new', town)
+  })
+})
+
+// show single house and display residents of houses
+router.get('/:townid/:id', (req, res) => {
+  House.findOne({ _id: req.params.id }).then(house => {
+    let townId = req.params.townid
+    res.render('town/house/view', { house, townId })
   })
 })
 
@@ -101,14 +114,6 @@ router.delete('/:townid/:id/edit', (req, res) => {
         res.render('town/house/edit', { house, townId, message2 })
       })
     }
-  })
-})
-
-// show single house and display residents of houses
-router.get('/:townid/:id', (req, res) => {
-  House.findOne({ _id: req.params.id }).then(house => {
-    let townId = req.params.townid
-    res.render('town/house/view', { house, townId })
   })
 })
 

@@ -2,16 +2,19 @@
   <a class="button is-primary" href="/{{townId}}">
     <span class="is-size-4 padding-bottom-5">
       <</span>Back to town</a>
+
   <h1 class="is-size-1">{{house.name}}</h1>
+
   <a href="{{house.id}}/edit" class="button is-info">Edit</a>
+
   <img src="{{house.image}}" alt="house-image">
 
   <h2 class="is-size-3">Residents:</h2>
+
   <div class="residents-outline">
     {{#each house.residents}}
     <p>{{this}}</p>
     {{/each}}
-
   </div>
 
 </section>
