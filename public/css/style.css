@@ -45,3 +45,8 @@ nav {
 .edit-buttons {
   margin: 5px 0;
 }
+
+.alert {
+  line-height: 10px;
+  font-size: 10px;
+}

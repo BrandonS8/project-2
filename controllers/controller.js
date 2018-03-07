@@ -68,7 +68,11 @@ router.put('/:townid/:id/edit', (req, res) => {
         res.redirect(`/${req.params.townid}/${req.params.id}`)
       })
     } else {
-      res.send('wrong password')
+      House.findOne({ _id: req.params.id }).then(house => {
+        let townId = req.params.townid
+        let message1 = 'WRONG PASSWORD. EDIT DENIED'
+        res.render('town/house/edit', { house, townId, message1 })
+      })
     }
   })
 })
@@ -85,7 +89,11 @@ router.delete('/:townid/:id/edit', (req, res) => {
         res.redirect(`/${req.params.townid}`)
       })
     } else {
-      res.send('wrong password')
+      House.findOne({ _id: req.params.id }).then(house => {
+        let townId = req.params.townid
+        let message2 = 'WRONG PASSWORD. DELETION DENIED'
+        res.render('town/house/edit', { house, townId, message2 })
+      })
     }
   })
 })

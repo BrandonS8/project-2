@@ -11,7 +11,11 @@
       <input type="submit" value="UPDATE" class="button is-info edit-buttons">
     </p>
   </form>
-
+  {{#if message1}}
+  <div class="message is-danger alert">
+    <p class="message-body">{{message1}}</p>
+  </div>
+  {{/if}}
   <form action="{{town.id/house.id}}?_method=delete" method="POST">
     <label class="label">Password:</label>
     <input type="password" name="key" placeholder="password" class="input">
@@ -19,4 +23,9 @@
       <input type="submit" value="DELETE" class="button is-danger edit-buttons">
     </p>
   </form>
+  {{#if message2}}
+  <div class="message is-danger alert">
+    <p class="message-body">{{message2}}</p>
+  </div>
+  {{/if}}
 </section>
