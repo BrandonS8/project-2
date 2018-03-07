@@ -1,17 +1,17 @@
 <section class="flex-column">
   <h1 class="is-size-1">{{house.name}}</h1>
-  <form action="{{town.id/house.id}}?_method=put" method="POST" id="newHouse">
-    <p>Name:</p>
-    <input type="text" name="name" placeholder="name" value="{{house.name}}">
-    <p>Residents:</p>
-    <textarea rows="2" cols="50" name="residents" form="newHouse" placeholder="Enter names seperated by commas">{{house.residents}}</textarea>
+  <form action="{{town.id/house.id}}?_method=put" method="POST">
+    <label class="label">Name:</label>
+    <input type="text" name="name" placeholder="name" value="{{house.name}}" class="input">
+    <label class="label">Residents:</label>
+    <textarea rows="2" cols="50" name="residents" placeholder="Enter names seperated by commas" class="textarea">{{house.residents}}</textarea>
     <p>
-      <input type="submit" value="Update">
+      <input type="submit" value="UPDATE" class="button is-info edit-buttons">
     </p>
   </form>
 
-  <form action="{{town.id/house.id}}?_method=delete" method="POST" id="newHouse">
-    <input type="submit" value="Delete">
+  <form action="{{town.id/house.id}}?_method=delete" method="POST">
+    <input type="submit" value="DELETE" class="button is-danger edit-buttons">
     </p>
   </form>
 </section>
