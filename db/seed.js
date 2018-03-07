@@ -12,6 +12,7 @@ Town.remove({}).then(() => {
         House.create({
           name: `Brandon's House`,
           residents: ['Brandon'],
+          key: 'French Fries',
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109545-200.png'
         }).then(house => {
           town.houses.push(house)
@@ -19,6 +20,7 @@ Town.remove({}).then(() => {
         House.create({
           name: `Carl's House`,
           residents: ['Carl', 'Miranda'],
+          key: 'French Fries',
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109538-200.png'
         }).then(house => {
           town.houses.push(house)
@@ -36,6 +38,7 @@ Town.remove({}).then(() => {
         House.create({
           name: `Bob's House`,
           residents: ['Bob'],
+          key: 'French Fries',
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109545-200.png'
         }).then(house => {
           town.houses.push(house)
@@ -43,6 +46,7 @@ Town.remove({}).then(() => {
         House.create({
           name: `Cool House`,
           residents: ['Carl', 'Miranda'],
+          key: 'French Fries',
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109538-200.png'
         }).then(house => {
           town.houses.push(house)

@@ -31,6 +31,7 @@ router.post('/:id', (req, res) => {
     House.create({
       name: req.body.name,
       residents: names,
+      key: req.body.key,
       image: randomIcon()
     })
       .then(house => {
@@ -56,23 +57,36 @@ router.get('/:townid/:id/edit', (req, res) => {
 // update house
 router.put('/:townid/:id/edit', (req, res) => {
   let names = req.body.residents.split(',')
-  House.findOneAndUpdate(
-    { _id: req.params.id },
-    { $set: { name: req.body.name, residents: names } },
-    { new: true }
-  ).then(house => {
-    res.redirect(`/${req.params.townid}/${req.params.id}`)
+  House.findOne({ _id: req.params.id }).then(house => {
+    if (req.body.key === house.key) {
+      console.log('success')
+      House.findOneAndUpdate(
+        { _id: req.params.id },
+        { $set: { name: req.body.name, residents: names } },
+        { new: true }
+      ).then(house => {
+        res.redirect(`/${req.params.townid}/${req.params.id}`)
+      })
+    } else {
+      res.send('wrong password')
+    }
   })
 })
 
 // delete house
 router.delete('/:townid/:id/edit', (req, res) => {
-  Town.findOne({ _id: req.params.townid }).then(town => {
-    town.houses.pull({ _id: req.params.id })
-    town.save()
-  })
-  House.findOneAndRemove({ _id: req.params.id }).then(() => {
-    res.redirect(`/${req.params.townid}`)
+  House.findOne({ _id: req.params.id }).then(house => {
+    if (req.body.key === house.key) {
+      Town.findOne({ _id: req.params.townid }).then(town => {
+        town.houses.pull({ _id: req.params.id })
+        town.save()
+      })
+      House.findOneAndRemove({ _id: req.params.id }).then(() => {
+        res.redirect(`/${req.params.townid}`)
+      })
+    } else {
+      res.send('wrong password')
+    }
   })
 })
 
