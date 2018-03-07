@@ -1,5 +1,10 @@
 const House = require('../models/House')
 const Town = require('../models/Town')
+const bcrypt = require('bcrypt-nodejs')
+
+function hashKey(key) {
+  return bcrypt.hashSync(key, bcrypt.genSaltSync(8))
+}
 
 Town.remove({}).then(() => {
   House.remove({}).then(() => {
@@ -12,7 +17,7 @@ Town.remove({}).then(() => {
         House.create({
           name: `Brandon's House`,
           residents: ['Brandon'],
-          key: 'French Fries',
+          key: hashKey('French Fries'),
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109545-200.png'
         }).then(house => {
           town.houses.push(house)
@@ -20,7 +25,7 @@ Town.remove({}).then(() => {
         House.create({
           name: `Carl's House`,
           residents: ['Carl', 'Miranda'],
-          key: 'French Fries',
+          key: hashKey('French Fries'),
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109538-200.png'
         }).then(house => {
           town.houses.push(house)
@@ -38,7 +43,7 @@ Town.remove({}).then(() => {
         House.create({
           name: `Bob's House`,
           residents: ['Bob'],
-          key: 'French Fries',
+          key: hashKey('French Fries'),
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109545-200.png'
         }).then(house => {
           town.houses.push(house)
@@ -46,7 +51,7 @@ Town.remove({}).then(() => {
         House.create({
           name: `Cool House`,
           residents: ['Carl', 'Miranda'],
-          key: 'French Fries',
+          key: hashKey('French Fries'),
           image: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1109538-200.png'
         }).then(house => {
           town.houses.push(house)

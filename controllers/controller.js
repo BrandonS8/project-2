@@ -4,7 +4,7 @@ const House = require('../models/House')
 const Town = require('../models/Town')
 const randomIcon = require('../resources/houseApi.js')
 const bcrypt = require('bcrypt-nodejs')
-function hashKey (key) {
+function hashKey(key) {
   return bcrypt.hashSync(key, bcrypt.genSaltSync(8))
 }
 
@@ -54,7 +54,6 @@ router.post('/:id', (req, res) => {
 // display edit form
 router.get('/:townid/:id/edit', (req, res) => {
   House.findOne({ _id: req.params.id }).then(house => {
-    console.log(house.key)
     let townId = req.params.townid
     res.render('town/house/edit', { house, townId })
   })
@@ -65,7 +64,6 @@ router.put('/:townid/:id/edit', (req, res) => {
   let names = req.body.residents.split(',')
   House.findOne({ _id: req.params.id }).then(house => {
     if (house.checkKey(req.body.key)) {
-      console.log('success')
       House.findOneAndUpdate(
         { _id: req.params.id },
         { $set: { name: req.body.name, residents: names } },
