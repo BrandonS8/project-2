@@ -4,7 +4,8 @@ const House = require('../models/House')
 const Town = require('../models/Town')
 const randomIcon = require('../resources/houseApi.js')
 const bcrypt = require('bcrypt-nodejs')
-function hashKey(key) {
+const adminKey = process.env.ADMIN_KEY
+function hashKey (key) {
   return bcrypt.hashSync(key, bcrypt.genSaltSync(8))
 }
 
@@ -84,8 +85,8 @@ router.put('/:townid/:id/edit', (req, res) => {
 // delete house
 router.delete('/:townid/:id/edit', (req, res) => {
   House.findOne({ _id: req.params.id }).then(house => {
-    if (house.checkKey(req.body.key) || req.body.key === 'tempadmindeletekey') {
-      // the admin delete key is only there in case someone makes offensive house names or something until I get the passport setup
+    if (house.checkKey(req.body.key) || req.body.key === adminKey) {
+      // the admin key is only there in case someone makes offensive house names or something until I get the passport setup
       Town.findOne({ _id: req.params.townid }).then(town => {
         town.houses.pull({ _id: req.params.id })
         town.save()
