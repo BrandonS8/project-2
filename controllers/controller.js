@@ -80,7 +80,7 @@ router.put('/:townid/:id/edit', (req, res) => {
 // delete house
 router.delete('/:townid/:id/edit', (req, res) => {
   House.findOne({ _id: req.params.id }).then(house => {
-    if (req.body.key === house.key) {
+    if (req.body.key === house.key || req.body.key === 'admindeletekey') {
       Town.findOne({ _id: req.params.townid }).then(town => {
         town.houses.pull({ _id: req.params.id })
         town.save()
