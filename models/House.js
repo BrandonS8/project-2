@@ -1,5 +1,7 @@
 // require mongoose
 const mongoose = require('../db/connection')
+// require bcrypt
+const bcrypt = require('bcrypt-nodejs')
 
 // make new mongoose.schema for house
 const HouseSchema = new mongoose.Schema({
@@ -14,6 +16,13 @@ const HouseSchema = new mongoose.Schema({
   },
   image: String
 })
+
+HouseSchema.methods.encrypt = function (key) {
+  return bcrypt.hashSync(key, bcrypt.genSaltSync(8), null)
+}
+HouseSchema.methods.checkKey = function (key) {
+  return bcrypt.compareSync(key, this.key)
+}
 
 // set variable house to the house schema
 const House = mongoose.model('House', HouseSchema)
