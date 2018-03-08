@@ -1,15 +1,55 @@
-/* .navbar {
-  background: lightcyan;
-} */
-
-.card {
-  width: 300px;
+nav {
+  padding: 10px;
 }
 .container {
   display: flex;
   justify-content: center;
 }
-
+.card {
+  width: 300px;
+}
+.new-house {
+  width: 200px;
+  margin-bottom: 10px;
+}
+.house-card {
+  width: 200px;
+  margin: 1px 0;
+}
+.edit-buttons {
+  margin: 5px 0;
+}
+.alert {
+  line-height: 10px;
+  font-size: 10px;
+}
+.residents {
+  max-height: 100px;
+  flex-wrap: wrap;
+}
+.residents p {
+  margin: 4px 6px;
+}
+.residents-outline {
+  min-width: 100px;
+  padding: 5px;
+  margin: 8px;
+  border-left: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+}
+.icon-credit {
+  margin: 20px 0 0 0;
+  padding: 0px;
+  line-height: 10px;
+  font-size: 10px;
+}
+.form-outline {
+  padding: 5px;
+  margin: 8px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px lightgrey;
+}
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -21,55 +61,9 @@
   align-items: center;
   flex-wrap: wrap;
 }
-
-.new-house {
-  width: 200px;
-  margin-bottom: 10px;
-}
-
-nav {
-  padding: 10px;
-}
-
-.house-card {
-  width: 200px;
-  margin: 1px 0;
-}
-.residents {
-  max-height: 100px;
-  flex-wrap: wrap;
-}
-.residents p {
-  margin: 4px 6px;
-}
-
-.edit-buttons {
-  margin: 5px 0;
-}
-
-.alert {
-  line-height: 10px;
-  font-size: 10px;
-}
-
-.form-outline {
-  padding: 5px;
-  margin: 8px;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-  box-shadow: 0 2px 6px lightgrey;
-}
-.residents-outline {
-  min-width: 100px;
-  padding: 5px;
-  margin: 8px;
-  border-left: 1px solid lightgrey;
-  border-right: 1px solid lightgrey;
-}
 .padding-bottom-5 {
   padding-bottom: 5px;
 }
-
 .footer{
   margin: 20px 0;
   padding: 10px 0;

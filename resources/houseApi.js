@@ -5,15 +5,10 @@ const NounProject = require('the-noun-project'),
     key: process.env.TNP_API_KEY,
     secret: process.env.TNP_API_SECRET
   })
-// nounProject.getUserCollections('849117', function(err, data) {
-//   if (!err) {
-//     console.log(data.collections)
-//   }
-// })
 // tengwan's id 849117
 // collection id is 35108 for buildings and 35110 for houses
 let icons = []
-nounProject.getCollectionIconsById('35110', function(err, data) {
+nounProject.getCollectionIconsById('35110', function (err, data) {
   if (!err) {
     icons = data.icons
   }
