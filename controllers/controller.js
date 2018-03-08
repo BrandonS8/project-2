@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt-nodejs')
 const adminKey = process.env.ADMIN_KEY
 
 // hash function
-function hashKey(key) {
+function hashKey (key) {
   return bcrypt.hashSync(key, bcrypt.genSaltSync(8))
 }
 
