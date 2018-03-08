@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt-nodejs')
 const adminKey = process.env.ADMIN_KEY
 
 // hash function
-function hashKey (key) {
+function hashKey(key) {
   return bcrypt.hashSync(key, bcrypt.genSaltSync(8))
 }
 
@@ -36,8 +36,8 @@ router.get('/:name/new', (req, res) => {
 })
 
 // show single house and display residents of houses
-router.get('/:townname/:name', (req, res) => {
-  House.findOne({ name: req.params.name }).then(house => {
+router.get('/:townname/:id', (req, res) => {
+  House.findOne({ _id: req.params.id }).then(house => {
     let townName = req.params.townname
     res.render('town/house/view', { house, townName })
   })
@@ -66,27 +66,27 @@ router.post('/:name', (req, res) => {
 })
 
 // display edit form
-router.get('/:townname/:name/edit', (req, res) => {
-  House.findOne({ name: req.params.name }).then(house => {
+router.get('/:townname/:id/edit', (req, res) => {
+  House.findOne({ _id: req.params.id }).then(house => {
     let townName = req.params.townname
     res.render('town/house/edit', { house, townName })
   })
 })
 
 // update house
-router.put('/:townname/:name/edit', (req, res) => {
+router.put('/:townname/:id/edit', (req, res) => {
   let names = req.body.residents.split(',')
-  House.findOne({ name: req.params.name }).then(house => {
+  House.findOne({ _id: req.params.id }).then(house => {
     if (house.checkKey(req.body.key)) {
       House.findOneAndUpdate(
-        { name: req.params.name },
+        { _id: req.params.id },
         { $set: { name: req.body.name, residents: names } },
         { new: true }
       ).then(house => {
-        res.redirect(`/${req.params.townname}/${req.params.name}`)
+        res.redirect(`/${req.params.townname}/${req.params.id}`)
       })
     } else {
-      House.findOne({ name: req.params.name }).then(house => {
+      House.findOne({ _id: req.params.id }).then(house => {
         let townName = req.params.townname
         let message1 = 'WRONG PASSWORD. EDIT DENIED'
         res.render('town/house/edit', { house, townName, message1 })
@@ -96,19 +96,19 @@ router.put('/:townname/:name/edit', (req, res) => {
 })
 
 // delete house
-router.delete('/:townname/:name/edit', (req, res) => {
-  House.findOne({ name: req.params.name }).then(house => {
+router.delete('/:townname/:id/edit', (req, res) => {
+  House.findOne({ _id: req.params.id }).then(house => {
     if (house.checkKey(req.body.key) || req.body.key === adminKey) {
       // the admin key is only there in case someone makes offensive house names or something until I get the passport setup
       Town.findOne({ name: req.params.townname }).then(town => {
-        town.houses.pull({ name: req.params.name })
+        town.houses.pull({ _id: req.params.id })
         town.save()
       })
-      House.findOneAndRemove({ name: req.params.name }).then(() => {
+      House.findOneAndRemove({ jd: req.params.id }).then(() => {
         res.redirect(`/${req.params.townname}`)
       })
     } else {
-      House.findOne({ name: req.params.name }).then(house => {
+      House.findOne({ _id: req.params.id }).then(house => {
         let townName = req.params.townname
         let message2 = 'WRONG PASSWORD. DELETION DENIED'
         res.render('town/house/edit', { house, townName, message2 })
