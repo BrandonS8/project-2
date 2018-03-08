@@ -76,7 +76,7 @@ I also really wanted each house to show different characters but have not been a
 (https://github.com/BrandonS8/project-2/tree/test-resident-object)
 ![character example](https://i.imgur.com/1Po71UE.png)
 
-Another reason I can't finish this character idea is the api limit, it's only 5000. Every time a house is made with 4 or so residents thats 4 + 1 for the house so 5. Limiting me to only 1000 houses, now if people add 10 people each time, thats only 500.
+The main problem is updating the characters, right now the only method I could get working is to just delete all the residents and remake them using the new list. The other option is to make a different form for adding residents and another one for removing them.
 
 ## Running on a local machine
 If you want to get this running on your system (assuming you have MongoDB and it's running) you need to follow these steps: 
