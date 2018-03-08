@@ -13,7 +13,7 @@ const bcrypt = require('bcrypt-nodejs')
 const adminKey = process.env.ADMIN_KEY
 
 // hash function
-function hashKey(key) {
+function hashKey (key) {
   return bcrypt.hashSync(key, bcrypt.genSaltSync(8))
 }
 
@@ -63,7 +63,7 @@ router.post('/:name', (req, res) => {
       }
     })
   })
-  function makeHouse() {
+  function makeHouse () {
     Town.findOne({ name: req.params.name }).then(town => {
       House.create({
         name: req.body.name,
@@ -116,8 +116,9 @@ router.put('/:townname/:id/edit', (req, res) => {
     })
   })
 
-    // this part out of order, needs check key called earlier 
+    // this part out of order, needs check key called earlier
     // maybe house.find one > house > check key > run remove residents > then below
+    // maybe add a method to house object with the remove residents!?
     .then(house => {
       if (house.checkKey(req.body.key)) {
         House.findOneAndUpdate(
