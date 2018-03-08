@@ -70,7 +70,10 @@ This password storing system is mostly secure using BCrypt but the problem lies 
 
 In the future this will definitely have a better authentication system, whether it be passport or another option. The better system will have houses linked to users and an admin account that has access to all houses.
 
-I also want to add a mail system where you can send mail to other houses.
+A mail system between houses would be added after better authentication as well.
+
+I also really wanted each house to show different characters but have not been able to finish it yet. Below is a picture from my partially working branch using this character system. You can view the branch [here.](https://github.com/BrandonS8/project-2/tree/test-resident-object)
+![character example](https://i.imgur.com/1Po71UE.png)
 
 ## Running on a local machine
 If you want to get this running on your system (assuming you have MongoDB and it's running) you need to follow these steps: 
