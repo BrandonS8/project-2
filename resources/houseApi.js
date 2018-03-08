@@ -5,8 +5,10 @@ const NounProject = require('the-noun-project'),
     key: process.env.TNP_API_KEY,
     secret: process.env.TNP_API_SECRET
   })
+
 // tengwan's id 849117
 // collection id is 35108 for buildings and 35110 for houses
+
 let icons = []
 nounProject.getCollectionIconsById('35110', function (err, data) {
   if (!err) {
@@ -14,7 +16,7 @@ nounProject.getCollectionIconsById('35110', function (err, data) {
   }
 })
 
-function randomIcon() {
+function randomIcon () {
   let i = Math.floor(Math.random() * icons.length) + 0
   return icons[i].preview_url
 }
