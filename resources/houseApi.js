@@ -16,7 +16,7 @@ nounProject.getCollectionIconsById('35110', function (err, data) {
   }
 })
 
-function randomIcon () {
+function randomIcon() {
   let i = Math.floor(Math.random() * icons.length) + 0
   return icons[i].preview_url
 }
