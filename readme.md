@@ -72,6 +72,8 @@ In the future this will definitely have a better authentication system, whether 
 
 A mail system between houses would be added after better authentication as well.
 
+In the far future I'd like to use a map and let people make points on the map for their house.
+
 I also really wanted each house to show different characters but have not been able to finish it yet. Below is a picture from my partially working branch using this character system. You can view the branch [here.](https://github.com/BrandonS8/project-2/tree/test-resident-object)  
 ![character example](https://i.imgur.com/1Po71UE.png)
 
