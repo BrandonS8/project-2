@@ -72,8 +72,11 @@ In the future this will definitely have a better authentication system, whether 
 
 A mail system between houses would be added after better authentication as well.
 
-I also really wanted each house to show different characters but have not been able to finish it yet. Below is a picture from my partially working branch using this character system. You can view the branch [here.](https://github.com/BrandonS8/project-2/tree/test-resident-object)
+I also really wanted each house to show different characters but have not been able to finish it yet. Below is a picture from my partially working branch using this character system. You can view the branch [here.]
+(https://github.com/BrandonS8/project-2/tree/test-resident-object)
 ![character example](https://i.imgur.com/1Po71UE.png)
+
+Another reason I can't finish this character idea is the api limit, it's only 5000. Every time a house is made with 4 or so residents thats 4 + 1 for the house so 5. Limiting me to only 1000 houses, now if people add 10 people each time, thats only 500.
 
 ## Running on a local machine
 If you want to get this running on your system (assuming you have MongoDB and it's running) you need to follow these steps: 
