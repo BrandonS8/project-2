@@ -86,7 +86,7 @@ router.post('/:name', (req, res) => {
 
 // display edit form
 router.get('/:townname/:id/edit', (req, res) => {
-  House.findOne({ _id: req.params.id }).then(house => {
+  House.findOne({ _id: req.params.id }).populate('residents').then(house => {
     let townName = req.params.townname
     res.render('town/house/edit', { house, townName })
   })
@@ -95,23 +95,46 @@ router.get('/:townname/:id/edit', (req, res) => {
 // update house
 router.put('/:townname/:id/edit', (req, res) => {
   let names = req.body.residents.split(',')
-  House.findOne({ _id: req.params.id }).then(house => {
-    if (house.checkKey(req.body.key)) {
-      House.findOneAndUpdate(
-        { _id: req.params.id },
-        { $set: { name: req.body.name, residents: names } },
-        { new: true }
-      ).then(house => {
-        res.redirect(`/${req.params.townname}/${req.params.id}`)
+  let residents = []
+  let count = 0
+  House.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: { name: req.body.name, residents: [] } },
+    { new: true }
+  ).then(() => {
+    names.forEach(resident => {
+      Resident.create({
+        name: resident,
+        image: randomCharIcon()
+      }).then(resident => {
+        residents.push(resident)
+        count++
+        if (count >= names.length) {
+          makeHouse()
+        }
       })
-    } else {
-      House.findOne({ _id: req.params.id }).then(house => {
-        let townName = req.params.townname
-        let message1 = 'WRONG PASSWORD. EDIT DENIED'
-        res.render('town/house/edit', { house, townName, message1 })
-      })
-    }
+    })
   })
+
+    // this part out of order, needs check key called earlier 
+    // maybe house.find one > house > check key > run remove residents > then below
+    .then(house => {
+      if (house.checkKey(req.body.key)) {
+        House.findOneAndUpdate(
+          { _id: req.params.id },
+          { $set: { name: req.body.name, residents: names } },
+          { new: true }
+        ).then(house => {
+          res.redirect(`/${req.params.townname}/${req.params.id}`)
+        })
+      } else {
+        House.findOne({ _id: req.params.id }).then(house => {
+          let townName = req.params.townname
+          let message1 = 'WRONG PASSWORD. EDIT DENIED'
+          res.render('town/house/edit', { house, townName, message1 })
+        })
+      }
+    })
 })
 
 // delete house

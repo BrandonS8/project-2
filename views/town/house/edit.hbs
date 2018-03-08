@@ -10,7 +10,7 @@
     <input type="text" name="name" placeholder="name" value="{{house.name}}" class="input" required>
 
     <label class="label">Residents:</label>
-    <textarea rows="2" cols="50" name="residents" placeholder="Enter names seperated by commas" class="textarea">{{house.residents}}</textarea>
+    <textarea rows="2" cols="50" name="residents" placeholder="Enter names seperated by commas" class="textarea">{{#each house.residents}}{{this.name}},{{/each}}</textarea>
 
     <label class="label">Password:</label>
     <input type="password" name="key" placeholder="password" class="input">
