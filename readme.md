@@ -61,7 +61,7 @@ const HouseSchema = new mongoose.Schema({
 I chose to style this project using [Bulma](https://bulma.io/) even though I feel Bulma is less featured compared to [Materialize](http://materializecss.com/) because I liked the default styles more and it increases variation among my classes designs. Most of my class was only introduced to Materialize and it seemed nearly all of them were planning to use it, I wanted my project to stand out from the others.
 
 ## The authentication system
-This currently stores a hashed key with each house, set by the creator of the house. I originally intended to use a full user system such as passport. I was running into a large amount of errors with no error codes so fixing them was difficult to say the least. I decided to implement the current password system in order to meet the project's deadline. The passport branch is still there, outdated compared to master, if you wanna see the attempt.
+This currently stores a hashed key with each house, set by the creator of the house. I originally intended to use a full user system such as passport. I was running into a large amount of errors with no error codes so fixing them was difficult to say the least. I decided to implement the current password system in order to meet the project's deadline. The old [passport branch](https://github.com/BrandonS8/project-2/tree/passport) is still there, outdated compared to master, if you wanna see the attempt.
 
 #### Why is this not good?
 This password storing system is mostly secure using BCrypt but the problem lies in being able to delete houses as an admin would. There is no admin account I can give access, so I had to set an environment variable with a string to use as the admin pass. Obviously storing an admin password in an environment variable is a bad idea for security reasons even if you're storing the hash only and thats a major reason I intend to add passport in the future.
@@ -72,8 +72,7 @@ In the future this will definitely have a better authentication system, whether 
 
 A mail system between houses would be added after better authentication as well.
 
-I also really wanted each house to show different characters but have not been able to finish it yet. Below is a picture from my partially working branch using this character system. You can view the branch [here.]
-(https://github.com/BrandonS8/project-2/tree/test-resident-object)
+I also really wanted each house to show different characters but have not been able to finish it yet. Below is a picture from my partially working branch using this character system. You can view the branch [here.](https://github.com/BrandonS8/project-2/tree/test-resident-object)  
 ![character example](https://i.imgur.com/1Po71UE.png)
 
 The main problem is updating the characters, right now the only method I could get working is to just delete all the residents and remake them using the new list. The other option is to make a different form for adding residents and another one for removing them.
