@@ -13,7 +13,10 @@
 
   <div class="residents-outline">
     {{#each house.residents}}
-    <p>{{this}}</p>
+    <div>
+      <img src="{{this.image}}" class="character">
+      <p>{{this.name}}</p>
+    </div>
     {{/each}}
   </div>
 

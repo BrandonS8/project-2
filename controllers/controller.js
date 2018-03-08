@@ -2,15 +2,18 @@ const express = require('express')
 const router = express.Router()
 const House = require('../models/House')
 const Town = require('../models/Town')
+const Resident = require('../models/Resident')
 
 // import the randomIcon function from the api
 const randomIcon = require('../resources/houseApi.js')
+const randomCharIcon = require('../resources/characterApi.js')
+
 const bcrypt = require('bcrypt-nodejs')
 // used in place of an admin account because the internet can be an evil place, need to be able to delete houses
 const adminKey = process.env.ADMIN_KEY
 
 // hash function
-function hashKey (key) {
+function hashKey(key) {
   return bcrypt.hashSync(key, bcrypt.genSaltSync(8))
 }
 
@@ -37,7 +40,7 @@ router.get('/:name/new', (req, res) => {
 
 // show single house and display residents of houses
 router.get('/:townname/:id', (req, res) => {
-  House.findOne({ _id: req.params.id }).then(house => {
+  House.findOne({ _id: req.params.id }).populate('residents').then(house => {
     let townName = req.params.townname
     res.render('town/house/view', { house, townName })
   })
@@ -46,23 +49,39 @@ router.get('/:townname/:id', (req, res) => {
 // accept post for new house
 router.post('/:name', (req, res) => {
   let names = req.body.residents.split(',')
-  Town.findOne({ name: req.params.name }).then(town => {
-    House.create({
-      name: req.body.name,
-      residents: names,
-      key: hashKey(req.body.key),
-      image: randomIcon()
+  let residents = []
+  let count = 0
+  names.forEach(resident => {
+    Resident.create({
+      name: resident,
+      image: randomCharIcon()
+    }).then(resident => {
+      residents.push(resident)
+      count++
+      if (count >= names.length) {
+        makeHouse()
+      }
     })
-      .then(house => {
-        town.houses.push(house)
-      })
-      .then(() => {
-        town.save(err => console.log(err))
-      })
-      .then(house => {
-        res.redirect(`/${req.params.name}`)
-      })
   })
+  function makeHouse() {
+    Town.findOne({ name: req.params.name }).then(town => {
+      House.create({
+        name: req.body.name,
+        residents: residents,
+        key: hashKey(req.body.key),
+        image: randomIcon()
+      }).then(house => {
+        town.houses.push(house)
+        console.log(house)
+      })
+        .then(() => {
+          town.save(err => console.log(err))
+        })
+        .then(house => {
+          res.redirect(`/${req.params.name}`)
+        })
+    })
+  }
 })
 
 // display edit form

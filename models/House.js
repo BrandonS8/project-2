@@ -9,7 +9,12 @@ const HouseSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  residents: Array,
+  residents: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Resident'
+    }
+  ],
   key: {
     type: String,
     required: true

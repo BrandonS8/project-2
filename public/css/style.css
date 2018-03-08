@@ -25,17 +25,24 @@ nav {
 }
 .residents {
   max-height: 100px;
+  display: flex;
   flex-wrap: wrap;
 }
 .residents p {
   margin: 4px 6px;
 }
 .residents-outline {
+  max-height: 100px;
   min-width: 100px;
+  display: flex;
+  flex-wrap: wrap;
   padding: 5px;
   margin: 8px;
   border-left: 1px solid lightgrey;
   border-right: 1px solid lightgrey;
+}
+.character{
+  max-width: 100px;
 }
 .form-outline {
   padding: 5px;
