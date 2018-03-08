@@ -21,32 +21,32 @@ router.get('/', (req, res) => {
   })
 })
 // display houses of towns from /:id
-router.get('/:id', (req, res) => {
-  Town.findOne({ _id: req.params.id })
+router.get('/:name', (req, res) => {
+  Town.findOne({ name: req.params.name })
     .populate('houses')
     .then(town => {
       res.render('town/view', town)
     })
 })
 // display new form
-router.get('/:id/new', (req, res) => {
-  Town.findOne({ _id: req.params.id }).then(town => {
+router.get('/:name/new', (req, res) => {
+  Town.findOne({ name: req.params.name }).then(town => {
     res.render('town/new', town)
   })
 })
 
 // show single house and display residents of houses
-router.get('/:townid/:id', (req, res) => {
-  House.findOne({ _id: req.params.id }).then(house => {
-    let townId = req.params.townid
-    res.render('town/house/view', { house, townId })
+router.get('/:townname/:name', (req, res) => {
+  House.findOne({ name: req.params.name }).then(house => {
+    let townName = req.params.townname
+    res.render('town/house/view', { house, townName })
   })
 })
 
 // accept post for new house
-router.post('/:id', (req, res) => {
+router.post('/:name', (req, res) => {
   let names = req.body.residents.split(',')
-  Town.findOne({ _id: req.params.id }).then(town => {
+  Town.findOne({ name: req.params.name }).then(town => {
     House.create({
       name: req.body.name,
       residents: names,
@@ -60,58 +60,58 @@ router.post('/:id', (req, res) => {
         town.save(err => console.log(err))
       })
       .then(house => {
-        res.redirect(`/${req.params.id}`)
+        res.redirect(`/${req.params.name}`)
       })
   })
 })
 
 // display edit form
-router.get('/:townid/:id/edit', (req, res) => {
-  House.findOne({ _id: req.params.id }).then(house => {
-    let townId = req.params.townid
-    res.render('town/house/edit', { house, townId })
+router.get('/:townname/:name/edit', (req, res) => {
+  House.findOne({ name: req.params.name }).then(house => {
+    let townName = req.params.townname
+    res.render('town/house/edit', { house, townName })
   })
 })
 
 // update house
-router.put('/:townid/:id/edit', (req, res) => {
+router.put('/:townname/:name/edit', (req, res) => {
   let names = req.body.residents.split(',')
-  House.findOne({ _id: req.params.id }).then(house => {
+  House.findOne({ name: req.params.name }).then(house => {
     if (house.checkKey(req.body.key)) {
       House.findOneAndUpdate(
-        { _id: req.params.id },
+        { name: req.params.name },
         { $set: { name: req.body.name, residents: names } },
         { new: true }
       ).then(house => {
-        res.redirect(`/${req.params.townid}/${req.params.id}`)
+        res.redirect(`/${req.params.townname}/${req.params.name}`)
       })
     } else {
-      House.findOne({ _id: req.params.id }).then(house => {
-        let townId = req.params.townid
+      House.findOne({ name: req.params.name }).then(house => {
+        let townName = req.params.townname
         let message1 = 'WRONG PASSWORD. EDIT DENIED'
-        res.render('town/house/edit', { house, townId, message1 })
+        res.render('town/house/edit', { house, townName, message1 })
       })
     }
   })
 })
 
 // delete house
-router.delete('/:townid/:id/edit', (req, res) => {
-  House.findOne({ _id: req.params.id }).then(house => {
+router.delete('/:townname/:name/edit', (req, res) => {
+  House.findOne({ name: req.params.name }).then(house => {
     if (house.checkKey(req.body.key) || req.body.key === adminKey) {
       // the admin key is only there in case someone makes offensive house names or something until I get the passport setup
-      Town.findOne({ _id: req.params.townid }).then(town => {
-        town.houses.pull({ _id: req.params.id })
+      Town.findOne({ name: req.params.townname }).then(town => {
+        town.houses.pull({ name: req.params.name })
         town.save()
       })
-      House.findOneAndRemove({ _id: req.params.id }).then(() => {
-        res.redirect(`/${req.params.townid}`)
+      House.findOneAndRemove({ name: req.params.name }).then(() => {
+        res.redirect(`/${req.params.townname}`)
       })
     } else {
-      House.findOne({ _id: req.params.id }).then(house => {
-        let townId = req.params.townid
+      House.findOne({ name: req.params.name }).then(house => {
+        let townName = req.params.townname
         let message2 = 'WRONG PASSWORD. DELETION DENIED'
-        res.render('town/house/edit', { house, townId, message2 })
+        res.render('town/house/edit', { house, townName, message2 })
       })
     }
   })

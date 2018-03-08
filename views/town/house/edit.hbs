@@ -1,11 +1,11 @@
 <section class="flex-column">
-  <a class="button is-primary" href="/{{townId}}/{{house._id}}">
+  <a class="button is-primary" href="/{{townName}}/{{house.name}}">
     <span class="is-size-4 padding-bottom-5">
       <</span>Back to house</a>
 
   <h1 class="is-size-1">{{house.name}}</h1>
 
-  <form action="{{town.id/house.id}}?_method=put" method="POST" class="form-outline">
+  <form action="{{town.name/house.name}}?_method=put" method="POST" class="form-outline">
     <label class="label">Name:</label>
     <input type="text" name="name" placeholder="name" value="{{house.name}}" class="input" required>
 
@@ -25,7 +25,7 @@
   </div>
   {{/if}}
 
-  <form action="{{town.id/house.id}}?_method=delete" method="POST" class="form-outline">
+  <form action="{{town.name/house.name}}?_method=delete" method="POST" class="form-outline">
     <label class="label">Password:</label>
     <input type="password" name="key" placeholder="password" class="input">
 
